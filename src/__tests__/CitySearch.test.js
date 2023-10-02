@@ -26,12 +26,11 @@ describe('<CitySearch /> component', () => {
         expect(suggestionList).toHaveClass('suggestions');
     });
     test('updates list of suggestions correctly when user types in city textbox', async () => {
-        const user = userEvent.setup();
         const allEvents = await getEvents();
         const allLocations = extractLocations(allEvents);
         CitySearchComponent.rerender(<CitySearch allLocations={allLocations} />);
         const cityTextBox = CitySearchComponent.queryByRole('textbox');
-        await user.type(cityTextBox, "Berlin");
+        await userEvent.type(cityTextBox, "Berlin");
         const suggestions = allLocations? allLocations.filter((location) => {
             return location.toUpperCase().indexOf(cityTextBox.value.toUpperCase()) > -1;
         }): [];
@@ -43,14 +42,13 @@ describe('<CitySearch /> component', () => {
         }
     });
     test('renders the suggestion text in the textbox upon clicking on the suggestion', async () => {
-        const user = userEvent.setup();
         const allEvents = await getEvents();
         const allLocations = extractLocations(allEvents);
         CitySearchComponent.rerender(<CitySearch allLocations={allLocations} />);
         const cityTextBox = CitySearchComponent.queryByRole('textbox');
-        await user.type(cityTextBox, "Berlin");
+        await userEvent.type(cityTextBox, "Berlin");
         const BerlinGermanySuggestion = CitySearchComponent.queryAllByRole('listitem')[0];
-        await user.click(BerlinGermanySuggestion);
+        await userEvent.click(BerlinGermanySuggestion);
         expect(cityTextBox).toHaveValue(BerlinGermanySuggestion.textContent);
     });
 });
