@@ -1,9 +1,10 @@
-import EventList from './components/EventList.js';
-import './App.css';
-import CitySearch from './components/CitySearch.js';
-import NumberOfEvents from './components/NumberOfEvents.js';
+import CitySearch from './components/CitySearch';
+import EventList from './components/EventList';
+import NumberOfEvents from './components/NumberOfEvents';
 import { useEffect, useState } from 'react';
-import { extractLocations, getEvents } from './api.js';
+import { extractLocations, getEvents } from './api';
+
+import './App.css';
 
 const App = () => {
   const [events, setEvents] = useState([]);
@@ -17,9 +18,9 @@ const App = () => {
 
   const fetchData = async () => {
     const allEvents = await getEvents();
-    const filteredEvents = currentCity === "See all cities"?
-    allEvents:
-    allEvents.filter(event => event.location === currentCity)
+    const filteredEvents = currentCity === "See all cities" ?
+      allEvents :
+      allEvents.filter(event => event.location === currentCity)
     setEvents(filteredEvents.slice(0, currentNOE));
     setAllLocations(extractLocations(allEvents));
   }

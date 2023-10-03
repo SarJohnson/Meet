@@ -18,10 +18,10 @@ const removeQuery = () => {
     let newurl;
     if (window.history.pushState && window.location.pathname) {
         newurl = 
-        window.location.protocol +
-        "//" +
-        window.location.host + 
-        window.location.pathname;
+            window.location.protocol +
+            "//" +
+            window.location.host + 
+            window.location.pathname;
         window.history.pushState("", "", newurl);
     } else {
         newurl = window.location.protocol + "//" + window.location.host;
@@ -63,17 +63,15 @@ export const getAccessToken = async () => {
         const searchParams = new URLSearchParams(window.location.search);
         const code = await searchParams.get("code");
         if (!code) {
-            const response = await searchParams.get("code");
-            if (!code) {
-                const response = await fetch(
-                    "https://41llh4fwu6.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url"
-                );
-                const result = await response.json();
-                const { authUrl } = result;
-                return (window.location.href = authUrl);
-            }
-            return code && getAccessToken(code);
+            const response = await fetch(
+                "https://41llh4fwu6.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url"
+            );
+            const result = await response.json();
+            const { authUrl } = result;
+            return (window.location.href = authUrl);
         }
-        return accessToken;
+        return code && getToken(code);
     }
-}
+    return accessToken;
+    
+};
