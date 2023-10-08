@@ -7,7 +7,7 @@ import App from '../App';
 describe('<CitySearch /> component', () => {
     let CitySearchComponent;
     beforeEach(() => {
-        CitySearchComponent = render(<CitySearch allLocations={[]} />);
+        CitySearchComponent = render(<CitySearch allLocations={[]} setInfoAlert={() => {}} />);
     });
     test('renders text input', () => {
         const cityTextBox = CitySearchComponent.queryByRole('textbox');
@@ -30,7 +30,7 @@ describe('<CitySearch /> component', () => {
         const user = userEvent.setup();
         const allEvents = await getEvents();
         const allLocations = extractLocations(allEvents);
-        CitySearchComponent.rerender(<CitySearch allLocations={allLocations} />);
+        CitySearchComponent.rerender(<CitySearch allLocations={allLocations} setInfoAlert={() => {}} />);
         const cityTextBox = CitySearchComponent.queryByRole('textbox');
         await user.type(cityTextBox, "Berlin");
         const suggestions = allLocations? allLocations.filter((location) => {
@@ -47,7 +47,7 @@ describe('<CitySearch /> component', () => {
         const user = userEvent.setup();
         const allEvents = await getEvents();
         const allLocations = extractLocations(allEvents);
-        CitySearchComponent.rerender(<CitySearch allLocations={allLocations} setCurrentCity={() => { }}/>);
+        CitySearchComponent.rerender(<CitySearch allLocations={allLocations} setCurrentCity={() => { }} setInfoAlert={() => {}} />);
         const cityTextBox = CitySearchComponent.queryByRole('textbox');
         await user.type(cityTextBox, "Berlin");
         const BerlinGermanySuggestion = CitySearchComponent.queryAllByRole('listitem')[0];
