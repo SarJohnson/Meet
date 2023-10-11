@@ -59,7 +59,7 @@ defineFeature(feature, (test) => {
       () => {
         const AppDOM = AppComponent.container.firstChild;
         const eventList = within(AppDOM).queryAllByRole('listitem');
-        expect(eventList.length).toEqual(32);
+        expect(eventList.length).toEqual(10);
       }
     );
   });
