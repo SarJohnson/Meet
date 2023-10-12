@@ -46,7 +46,7 @@ const EventGenresChart = ({ events }) => {
 
   useEffect(() => {
     setData(getData());
-  }, [`${events}`]);
+  }, [`${data}`]);
 
   return (
     <ResponsiveContainer width="99%" height={400}>
