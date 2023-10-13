@@ -22,7 +22,7 @@ const App = () => {
     const allEvents = await getEvents();
     const filteredEvents = currentCity === "See all cities" ?
       allEvents :
-      allEvents.filter(event => event.location === currentCity)
+      allEvents.filter((event) => event.location === currentCity)
     setEvents(filteredEvents.slice(0, currentNOE));
     setAllLocations(extractLocations(allEvents));
   }
@@ -39,7 +39,11 @@ const App = () => {
   return (
     <div className="App">
       <h1>Meet App</h1>
-      <div className="alerts-container">{infoAlert.length ? <InfoAlert text={infoAlert}/> : null} {errorAlert.length ? <ErrorAlert text={errorAlert}/> : null} {warningAlert.length ? <WarningAlert text={warningAlert}/> : null}</div>
+      <div className="alerts-container">
+        {infoAlert.length ? <InfoAlert text={infoAlert}/> : null}
+        {errorAlert.length ? <ErrorAlert text={errorAlert}/> : null} 
+        {warningAlert.length ? <WarningAlert text={warningAlert}/> : null}
+      </div>
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} setInfoAlert={setInfoAlert}/>
       <NumberOfEvents setCurrentNOE={setCurrentNOE} setErrorAlert={setErrorAlert} />
       <div className='charts-container'>

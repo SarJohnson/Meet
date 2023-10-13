@@ -34,10 +34,10 @@ describe('<App /> integration', () => {
         const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');
         const allEvents = await getEvents();
         const berlinEvents = allEvents.filter(
-            event => event.location === 'Berlin, Germany'
+            (event) => event.location === 'Berlin, Germany'
         );
         expect(allRenderedEventItems.length).toBe(berlinEvents.length);
-        allRenderedEventItems.forEach(event => {
+        allRenderedEventItems.forEach((event) => {
             expect(event.textContent).toContain("Berlin, Germany");
         });
     });

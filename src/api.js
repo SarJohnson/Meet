@@ -38,27 +38,6 @@ const getToken = async (code) => {
     access_token && localStorage.setItem("access_token", access_token);
     return access_token;
 };
- 
-export const getEvents = async () => {
-    if (window.location.href.startsWith('http://localhost')) {
-        return mockData;
-    }
-    if (!navigator.onLine) {
-        const events = localStorage.getItem("lastEvents");
-        return events?JSON.parse(events):[];
-    }
-    const token = await getAccessToken();
-    if (token) {
-        removeQuery();
-        const url = "https://41llh4fwu6.execute-api.us-east-1.amazonaws.com/dev/api/get-events" + "/" + token;
-        const response = await fetch(url);
-        const result = await response.json();
-        if (result) {
-            localStorage.setItem("lastEvents", JSON.stringify(result.events));
-            return result.events;
-        } else return null;
-    }
-};
 
 export const getAccessToken = async () => {
     const accessToken = localStorage.getItem('access_token');
@@ -78,5 +57,25 @@ export const getAccessToken = async () => {
         return code && getToken(code);
     }
     return accessToken;
-    
+};
+
+export const getEvents = async () => {
+    if (window.location.href.startsWith('http://localhost')) {
+        return mockData;
+    }
+    if (!navigator.onLine) {
+        const events = localStorage.getItem("lastEvents");
+        return events?JSON.parse(events):[];
+    }
+    const token = await getAccessToken();
+    if (token) {
+        removeQuery();
+        const url = "https://41llh4fwu6.execute-api.us-east-1.amazonaws.com/dev/api/get-events" + "/" + token;
+        const response = await fetch(url);
+        const result = await response.json();
+        if (result) {
+            localStorage.setItem("lastEvents", JSON.stringify(result.events));
+            return result.events;
+        } else return null;
+    }
 };

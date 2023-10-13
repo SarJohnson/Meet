@@ -34,7 +34,7 @@ describe('<CitySearch /> component', () => {
         const cityTextBox = CitySearchComponent.queryByRole('textbox');
         await user.type(cityTextBox, "Berlin");
         const suggestions = allLocations? allLocations.filter((location) => {
-            return location.toUpperCase().indexOf(cityTextBox.value.toUpperCase()) > -1;
+            return (location.toUpperCase().indexOf(cityTextBox.value.toUpperCase()) > -1);
         }): [];
         const suggestionListItems = CitySearchComponent.queryAllByRole('listitem');
         expect(suggestionListItems).toHaveLength(suggestions.length + 1);
