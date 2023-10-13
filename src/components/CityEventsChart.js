@@ -5,7 +5,7 @@ import {
   XAxis, 
   YAxis, 
   CartesianGrid, 
-  Tooltip, 
+  Tooltip,
   ResponsiveContainer 
 } from 'recharts';
 
@@ -35,11 +35,11 @@ const CityEventsChart = ({ allLocations, events }) => {
           left: -30,
         }}
       >
-      <CartesianGrid />
-      <XAxis type="category" dataKey="city" name="City" angle={60} interval={0} tick={{ dx: 20, dy: 40, fontSize: 14 }} />
-      <YAxis type="number" dataKey="count" name="Number of Events" />
+      <CartesianGrid stroke="#e097a6" strokeDasharray="5 5" />
+      <XAxis type="category" dataKey="city" name="City" angle={60} interval={0} tick={{ dx: 20, dy: 40, fontSize: 14, fill: "#e097a6" }} />
+      <YAxis type="number" dataKey="count" name="Number of Events" tick={{ fill: "#e097a6" }} />
       <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-      <Scatter name="A school" data={data} fill="#e097a6" />
+      <Scatter name="A school" data={data} fill="#e097a6" line shape="star" />
       </ScatterChart>
     </ResponsiveContainer>
   );
