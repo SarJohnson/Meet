@@ -1,3 +1,26 @@
 # <h1 align="center">Meet App</h1>
- ### Serverless Functions
-This app will utilize serverless functions in a multitude of ways. My Meet app will be using serverless functions when users filter events by city, when users filter by number of events they would like to see, when users show specific event details, and when users show charts displaying event details. By using serverless functions for these details I won't have to worry about the infrastructure behind the functions because the functions will be deployed individually within the cloud. 
+![Natural Free Guide Lead Magnet Mockup Promotion Facebook Cover (2)](https://github.com/SarJohnson/Meet/assets/133914581/b1daea52-ab37-4461-98c7-caf4d6288377)
+### Project Description
+A progressive web application that shows upcoming events, fetching this data from the Google Calendar API. The user is able to search for specific cities, expand event details, and view the data in a pie chart or scatter chart.
+### Dependencies
+-Recharts
+</br>
+-Jest-Cucumber
+</br>
+-Testing-Library
+</br>
+-React
+</br>
+-Puppeteer
+### Links
+Live- https://sarjohnson.github.io/Meet
+### Built With
+-HTML
+</br>
+-CSS
+</br>
+-Javascript
+</br>
+-Gherkin
+</br>
+-React
